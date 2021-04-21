@@ -182,7 +182,7 @@ configuration <- function(config) {
   names(suitable_points) <- "data"
   suitable_points <- suitable_points[suitable_points$data > 0]
   suitable_cells <-
-    terra::extract(suitable, suitable_points, cellnumbers = TRUE)[, 1]
+    terra::extract(suitable, suitable_points, cells = TRUE)$cell
   suitable_row <- terra::rowFromCell(suitable, suitable_cells)
   suitable_row <- suitable_row - 1
   suitable_row <- as.integer(suitable_row)
@@ -473,7 +473,8 @@ configuration <- function(config) {
   }
 
 
-  if (config$function_name %in% c("validate", "multirun", "sensitivity")) {
+  if (config$function_name %in%
+      c("validate", "multirun", "sensitivity", "calibrate")) {
     if (is.na(config$number_of_cores) ||
         config$number_of_cores > parallel::detectCores()) {
       core_count <- parallel::detectCores() - 1

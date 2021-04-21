@@ -70,7 +70,8 @@ calibrate(
   calibration_method = "ABC",
   number_of_iterations = 1e+05,
   exposed_file = "",
-  verbose = TRUE
+  verbose = TRUE,
+  number_of_cores = NA
 )
 }
 \arguments{
@@ -301,6 +302,9 @@ preferably 1 million).}
 \item{verbose}{Boolean with true printing current status of calibration,
 (e.g. the current generation, current particle, and the acceptance rate).
 Defaults if FALSE.}
+
+\item{number_of_cores}{enter how many cores you want to use (default = NA).
+If not set uses the # of CPU cores - 1. must be an integer >= 1}
 }
 \value{
 a dataframe of the variables saved and their success metrics for

@@ -269,7 +269,7 @@ validate <- function(infected_years_file,
           reference <- terra::rast(config$infected_file)
           terra::values(comp_year) <- data$infected[[q]]
           terra::values(reference) <- config$infection_years2[[q]]
-          if (!is.null(config$mask)){
+          if (!is.null(config$mask)) {
             mask <- terra::rast(config$infected_file)
             terra::values(mask) <- config$mask_matrix
           }
@@ -280,7 +280,7 @@ validate <- function(infected_years_file,
                                              mask)
         }
 
-      to.qa <- data.frame(t(all_disagreement))
+      data.frame(t(all_disagreement))
     }
 
   parallel::stopCluster(cl)
